@@ -1,8 +1,8 @@
 ActiveAdmin.register User do
-  actions :index, :edit, :update, :create, :destroy
+  actions :index, :view, :edit, :update, :create, :destroy
 
   permit_params :first_name, :email, :last_name
-  
+
   index do
     column :first_name
     column :last_name
@@ -10,7 +10,8 @@ ActiveAdmin.register User do
     actions
   end
 
-  filter :name
-  filter :company
+  filter :first_name
+  filter :last_name
+  filter :email
 
 end
