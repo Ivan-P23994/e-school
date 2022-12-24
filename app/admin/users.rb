@@ -7,11 +7,12 @@ ActiveAdmin.register User do
     column :first_name
     column :last_name
     column :email
+    column :role
     actions
   end
 
   filter :first_name
   filter :last_name
   filter :email
-
+  filter :role
 end
