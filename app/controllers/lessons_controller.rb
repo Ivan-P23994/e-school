@@ -47,7 +47,7 @@ class LessonsController < InheritedResources::Base
   private
 
   def set_lesson
-    @lesson = lesson.find(params[:id])
+    @lesson = Lesson.find(params[:id])
   end
 
     def lesson_params
