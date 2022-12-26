@@ -16,4 +16,11 @@ class Course < ApplicationRecord
 
   validates :title, presence: true, length: 5..50
   validates :description, presence: true
+  validate :user_is_lecturer
+ 
+  def user_is_lecturer
+    if self.lecturer.role != "lecturer"
+      errors.add(:lecturer, "The lecturer does not have the lecturer role.")
+    end
+  end
 end
