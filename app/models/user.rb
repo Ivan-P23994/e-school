@@ -13,9 +13,12 @@
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
 #  role                   :integer
+#  course_id              :bigint
 #
 class User < ApplicationRecord
-  enum :role, [ :user, :lecturer ], default: :user
+  enum :role, [ :student, :lecturer ], default: :student
+  belongs_to :course, optional: true, inverse_of: :lecturer
+
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
@@ -29,6 +32,5 @@ class User < ApplicationRecord
   validates :email, presence: true,
                     uniqueness: { case_sensitive: false },
                     format: { with: VALID_EMAIL_REGEX, message: 'Email is invalid' }
-
 
 end

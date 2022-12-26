@@ -8,6 +8,8 @@
 #  field_of_study :string
 #  created_at     :datetime         not null
 #  updated_at     :datetime         not null
+#  lecturer_id    :bigint
+#  students_id    :bigint
 #
 require "test_helper"
 
