@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_12_25_230211) do
+ActiveRecord::Schema[7.0].define(version: 2022_12_26_143500) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -46,8 +46,13 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_25_230211) do
     t.string "field_of_study"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "lecturer_id"
-    t.bigint "students_id"
+  end
+
+  create_table "courses_users", id: false, force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "course_id"
+    t.index ["course_id"], name: "index_courses_users_on_course_id"
+    t.index ["user_id"], name: "index_courses_users_on_user_id"
   end
 
   create_table "lessons", force: :cascade do |t|
@@ -68,11 +73,13 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_25_230211) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "role"
-    t.bigint "course_id"
-    t.index ["course_id"], name: "index_users_on_course_id"
+    t.bigint "lectured_course_id"
     t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["lectured_course_id"], name: "index_users_on_lectured_course_id"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "users", "courses"
+  add_foreign_key "courses_users", "courses"
+  add_foreign_key "courses_users", "users"
+  add_foreign_key "users", "courses", column: "lectured_course_id"
 end
