@@ -54,12 +54,14 @@ group :development, :test do
   gem 'rubocop', require: false
   gem 'rubocop-rails', require: false
   gem 'rubocop-rspec', require: false
+  gem 'rspec-rails'
 end
 
 group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
-  gem "web-console"
   gem "annotate"
+  gem "web-console"
+  gem 'rspec-rails'
 
   # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
   # gem "rack-mini-profiler"
@@ -81,3 +83,5 @@ gem "activeadmin", "~> 2.13"
 gem "devise", "~> 4.8"
 
 gem "faker", "~> 3.1"
+
+gem "factory_bot", "~> 6.2"
