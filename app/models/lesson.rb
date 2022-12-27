@@ -11,6 +11,8 @@
 #  updated_at  :datetime         not null
 #
 class Lesson < ApplicationRecord
+  belongs_to :course, inverse_of: :lessons
+
   validates :title, presence: true, length: 5..50
   validates :description, presence: true
 end
