@@ -15,7 +15,7 @@
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
 #  role                   :integer
-#  course_id              :bigint
+#  lectured_course_id     :bigint
 #
 class User < ApplicationRecord
   enum :role, %i[student lecturer], default: :student
