@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CoursesController < InheritedResources::Base
   before_action :set_course, only: %i[show edit update destroy]
 
@@ -53,5 +55,4 @@ class CoursesController < InheritedResources::Base
   def course_params
     params.require(:course).permit(:id, :title, :description, :field_of_study)
   end
-
 end

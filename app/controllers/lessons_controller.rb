@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class LessonsController < InheritedResources::Base
   before_action :set_lesson, only: %i[show edit update destroy]
 
@@ -50,8 +52,7 @@ class LessonsController < InheritedResources::Base
     @lesson = Lesson.find(params[:id])
   end
 
-    def lesson_params
-      params.require(:lesson).permit(:title, :description)
-    end
-
+  def lesson_params
+    params.require(:lesson).permit(:title, :description)
+  end
 end

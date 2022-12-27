@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: courses
@@ -11,7 +13,7 @@
 #  lecturer_id    :bigint
 #  students_id    :bigint
 #
-require "test_helper"
+require 'test_helper'
 
 class CourseTest < ActiveSupport::TestCase
   # test "the truth" do

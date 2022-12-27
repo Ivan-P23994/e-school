@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 ActiveAdmin.register User do
   actions :index, :view, :edit, :update, :create, :destroy
 

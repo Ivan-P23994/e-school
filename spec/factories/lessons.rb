@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 FactoryBot.define do
   factory :lesson do
     sequence(:id) { |n| n }
-    first_name { Faker::Science.science(:formal, :applied) }
-    last_name { Faker::Lorem.sentence(word_count: 7) }
+    title { Faker::Science.science(:formal, :applied) }
+    description { Faker::Lorem.sentence(word_count: 7) }
   end
 end

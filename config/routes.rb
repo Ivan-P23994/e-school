@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 Rails.application.routes.draw do
   resources :lessons
   resources :courses
-  
+
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
 
@@ -9,5 +11,5 @@ Rails.application.routes.draw do
 
   get 'dashboard/index'
 
-  root to: "dashboard#index"
+  root to: 'dashboard#index'
 end

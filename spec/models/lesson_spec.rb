@@ -1,5 +1,10 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe Lesson, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  subject { build(:lesson) }
+
+  it { is_expected.to validate_presence_of(:title) }
+  it { is_expected.to validate_presence_of(:description) }
 end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 ActiveAdmin.register Lesson do
   actions :index, :view, :edit, :update, :create, :destroy
 
