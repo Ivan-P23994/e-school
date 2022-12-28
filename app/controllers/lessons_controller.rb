@@ -53,6 +53,6 @@ class LessonsController < InheritedResources::Base
   end
 
   def lesson_params
-    params.require(:lesson).permit(:title, :description)
+    params.require(:lesson).permit(:id, :title, :description, :course_id)
   end
 end
