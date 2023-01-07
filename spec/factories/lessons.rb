@@ -9,6 +9,7 @@
 #  description :text
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
+#  course_id   :bigint           not null
 #
 FactoryBot.define do
   factory :lesson do

@@ -13,7 +13,7 @@
 #
 FactoryBot.define do
   factory :course, aliases: [:lectured_course] do
-    association :lecturer, factory: :user, role: 'lecturer'
+    lecturer factory: :user, role: "lecturer"
 
     sequence(:id) { |n| n }
     title { Faker::Science.science(:formal, :applied) }
