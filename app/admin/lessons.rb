@@ -6,6 +6,8 @@ ActiveAdmin.register Lesson do
   permit_params :title, :description
 
   index do
+    selectable_column
+    id_column
     column :title
     column :description
     actions
