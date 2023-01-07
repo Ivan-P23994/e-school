@@ -15,7 +15,7 @@ class Course < ApplicationRecord
   has_one :lecturer, class_name: 'User', inverse_of: :lectured_course
   has_and_belongs_to_many :students, class_name: 'User'
 
-  has_many :books, inverse_of: :course
+  has_many :lessons, inverse_of: :course
 
   validates :title, presence: true, length: 5..50
   validates :description, presence: true
