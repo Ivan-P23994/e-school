@@ -7,17 +7,13 @@ class CoursesController < InheritedResources::Base
     @courses = Course.all
   end
 
-  def show
-    #set_course hook is triggered 
-  end
+  def show; end
 
   def new
     @course = Course.new
   end
 
-  def edit
-    #set_course hook is triggered 
-  end
+  def edit; end
 
   def create
     @course = Course.new(course_params)
