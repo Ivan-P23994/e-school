@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_12_27_213318) do
+ActiveRecord::Schema[7.0].define(version: 2023_01_08_005810) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -55,6 +55,18 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_27_213318) do
     t.index ["user_id"], name: "index_courses_users_on_user_id"
   end
 
+  create_table "invoices", force: :cascade do |t|
+    t.string "invoice_no", null: false
+    t.bigint "user_id", null: false
+    t.string "title"
+    t.float "amount", null: false
+    t.float "paid_amount", null: false
+    t.integer "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_invoices_on_user_id"
+  end
+
   create_table "lessons", force: :cascade do |t|
     t.string "title"
     t.text "description"
@@ -83,6 +95,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_27_213318) do
 
   add_foreign_key "courses_users", "courses"
   add_foreign_key "courses_users", "users"
+  add_foreign_key "invoices", "users"
   add_foreign_key "lessons", "courses"
   add_foreign_key "users", "courses", column: "lectured_course_id"
 end
