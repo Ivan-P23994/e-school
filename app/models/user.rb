@@ -27,6 +27,8 @@ class User < ApplicationRecord
   belongs_to :lectured_course, class_name: 'Course', optional: true, inverse_of: :lecturer
   has_and_belongs_to_many :courses, class_name: 'Course'
 
+  has_many :marks
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -37,4 +39,9 @@ class User < ApplicationRecord
   validates :email, presence: true,
                     uniqueness: { case_sensitive: false },
                     format: { with: VALID_EMAIL_REGEX, message: 'Email format is invalid' }
+
+  def full_name
+    first_name + ' ' + last_name
+  end
+
 end
