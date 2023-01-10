@@ -1,4 +1,5 @@
 ActiveAdmin.register Invoice do
+
   config.per_page = [10, 50, 100]
 
   permit_params :invoice_no, :user_id, :title, :amount, :paid_amount, :status
@@ -10,9 +11,7 @@ ActiveAdmin.register Invoice do
       div for: invoice do
         em invoice.user.full_name; br
         strong 'Course:' 
-        unless invoice.user.courses.first.nil?
-          span invoice.user.courses.first.title.to_s
-        end
+        span invoice.user.courses.first.title.to_s unless invoice.user.courses.first.nil?
       end
     end
     column :title
@@ -35,5 +34,4 @@ ActiveAdmin.register Invoice do
     end
     actions
   end
-
 end

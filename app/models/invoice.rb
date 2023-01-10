@@ -16,4 +16,6 @@ class Invoice < ApplicationRecord
   enum :status, [ :paid, :unpaid ], default: :unpaid
 
   belongs_to :user, inverse_of: :invoices
+
+  validates :invoice_no, :title, :amount, :user_id, presence: true
 end
