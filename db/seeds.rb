@@ -19,8 +19,9 @@ end
 
 @lecturers = []
 @students = []
+@courses = []
 
-15.times do
+60.times do
   @students << User.create!(
     first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name,
@@ -28,19 +29,6 @@ end
     password: '123456'
   )
 end
-
-
-5.times do
-  @lecturers << User.create!(
-    first_name: Faker::Name.first_name,
-    last_name: Faker::Name.last_name,
-    email: Faker::Internet.email,
-    role: "lecturer",
-    password: '123456'
-  )
-end
-
-@courses = []
 
 10.times do
   @courses << Course.create!(
@@ -50,9 +38,15 @@ end
   )
 end
 
-@lecturers.each.with_index do |e, i|
-  e.lectured_course = @courses[i]
-  e.save
+10.times do |count|
+  @lecturers << User.create!(
+    first_name: Faker::Name.first_name,
+    last_name: Faker::Name.last_name,
+    email: Faker::Internet.email,
+    lectured_course_id: count + 1,
+    role: "lecturer",
+    password: '123456'
+  )
 end
 
 @students.each do |e|
@@ -60,14 +54,18 @@ end
 end
 
 @courses.each do |e|
-  student = @students[rand(1..15)]
-  e.students << student unless e.students.include?(student)
+  count = 1
+  6.times do |time|
+    student = @students[time + count]
+    e.students << student unless e.students.include?(student)
+  end
+  count += 6
 end
 
 20.times do
   @invoice = Invoice.create!(
     invoice_no: "%05d" % rand(1..15),
-    user_id: rand(1..15),
+    user_id: rand(1..60),
     title: Faker::Science.science(:formal, :applied),
     amount: rand(1000..10_000),
     paid_amount: rand(10..1000),
