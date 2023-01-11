@@ -2,7 +2,9 @@ ActiveAdmin.register Invoice do
 
   config.per_page = [10, 50, 100]
 
-  permit_params :invoice_no, :user_id, :title, :amount, :paid_amount, :status
+  permit_params :invoice_no, :user_id , :title, :amount, :paid_amount, :status
+
+  includes :user
 
   index title: 'Student Fee Manager' do
     column :invoice_no
