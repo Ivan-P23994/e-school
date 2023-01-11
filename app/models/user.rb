@@ -27,7 +27,7 @@ class User < ApplicationRecord
   belongs_to :lectured_course, class_name: 'Course', optional: true, inverse_of: :lecturer
   has_and_belongs_to_many :courses, class_name: 'Course'
 
-  has_many :marks
+  has_many :marks, inverse_of: :user
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
