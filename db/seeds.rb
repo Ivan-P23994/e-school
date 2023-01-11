@@ -5,11 +5,13 @@ Course.destroy_all
 Lesson.destroy_all
 Invoice.destroy_all
 User.destroy_all
+Mark.destroy_all
 
 ActiveRecord::Base.connection.reset_pk_sequence!('admin_users')
 ActiveRecord::Base.connection.reset_pk_sequence!('courses')
 ActiveRecord::Base.connection.reset_pk_sequence!('lessons')
 ActiveRecord::Base.connection.reset_pk_sequence!('invoice')
+ActiveRecord::Base.connection.reset_pk_sequence!('mark')
 ActiveRecord::Base.connection.reset_pk_sequence!('users')
 
 if Rails.env.development?
@@ -30,7 +32,7 @@ end
   )
 end
 
-10.times do
+2.times do
   @courses << Course.create!(
     title: Faker::Science.science(:natural, :applied),
     description: Faker::Address.full_address,
@@ -38,7 +40,7 @@ end
   )
 end
 
-10.times do |count|
+2.times do |count|
   @lecturers << User.create!(
     first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name,
@@ -50,16 +52,16 @@ end
 end
 
 @students.each do |e|
-  e.courses << @courses[rand(1..5)]
+  e.courses << @courses[rand(0..1)]
 end
 
 @courses.each do |e|
   count = 1
-  6.times do |time|
+  20.times do |time|
     student = @students[time + count]
     e.students << student unless e.students.include?(student)
   end
-  count += 6
+  count += 20
 end
 
 10.times do |count|
@@ -67,6 +69,7 @@ end
     user_id: count + 1,
     course_id: 1,
     mark: rand(20..100),
+    comment: "Good",
     grade_point: rand(0..4)
   )
 end
