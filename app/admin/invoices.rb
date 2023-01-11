@@ -5,7 +5,6 @@ ActiveAdmin.register Invoice do
   permit_params :invoice_no, :user_id, :title, :amount, :paid_amount, :status
 
   index title: 'Student Fee Manager' do
-    selectable_column
     column :invoice_no
     column 'Invoicee' do |invoice|
       div for: invoice do
@@ -34,4 +33,9 @@ ActiveAdmin.register Invoice do
     end
     actions
   end
+
+  filter :created_at, label: 'By Date Range', as: :date_range
+  filter :user_first_name_or_user_last_name_cont, label: 'Student', as: :text, input_html: { rows: 1 }
+  filter :status, collection: Invoice.statuses, as: :select
+
 end
