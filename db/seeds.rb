@@ -1,18 +1,8 @@
 # frozen_string_literal: true
 
-AdminUser.destroy_all
-Course.destroy_all
-Lesson.destroy_all
-Invoice.destroy_all
-User.destroy_all
-Mark.destroy_all
-
-ActiveRecord::Base.connection.reset_pk_sequence!('admin_users')
-ActiveRecord::Base.connection.reset_pk_sequence!('courses')
-ActiveRecord::Base.connection.reset_pk_sequence!('lessons')
-ActiveRecord::Base.connection.reset_pk_sequence!('invoice')
-ActiveRecord::Base.connection.reset_pk_sequence!('mark')
-ActiveRecord::Base.connection.reset_pk_sequence!('users')
+ActiveRecord::Base.connection.tables.each do |table|
+  ActiveRecord::Base.connection.reset_pk_sequence!(table)
+end
 
 if Rails.env.development?
   AdminUser.create!(email: 'admin@example.com', password: 'password',
