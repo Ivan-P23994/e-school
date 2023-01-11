@@ -62,6 +62,15 @@ end
   count += 6
 end
 
+10.times do |count|
+  Mark.create!(
+    user_id: count + 1,
+    course_id: 1,
+    mark: rand(20..100),
+    grade_point: rand(0..4)
+  )
+end
+
 20.times do
   @invoice = Invoice.create!(
     invoice_no: "%05d" % rand(1..15),

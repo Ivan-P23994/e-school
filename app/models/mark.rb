@@ -13,6 +13,7 @@
 class Mark < ApplicationRecord
   enum :grade_point, %w[A A- B+ B C+ C F]
 
-  belongs_to :user
+  belongs_to :user, inverse_of: :marks
+  belongs_to :course, inverse_of: :marks
 
 end

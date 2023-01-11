@@ -78,11 +78,13 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_10_231717) do
 
   create_table "marks", force: :cascade do |t|
     t.bigint "user_id", null: false
+    t.bigint "course_id", null: false
     t.string "comment"
     t.integer "mark"
     t.integer "grade_point"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["course_id"], name: "index_marks_on_course_id"
     t.index ["user_id"], name: "index_marks_on_user_id"
   end
 
@@ -107,6 +109,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_10_231717) do
   add_foreign_key "courses_users", "users"
   add_foreign_key "invoices", "users"
   add_foreign_key "lessons", "courses"
+  add_foreign_key "marks", "courses"
   add_foreign_key "marks", "users"
   add_foreign_key "users", "courses", column: "lectured_course_id"
 end
