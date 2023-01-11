@@ -1,18 +1,13 @@
 ActiveAdmin.register Mark do
-
-  # See permitted parameters documentation:
-  # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
-  #
-  # Uncomment all parameters which should be permitted for assignment
-  #
-  # permit_params :user_id, :comment, :mark, :grade_point
-  #
-  # or
-  #
-  # permit_params do
-  #   permitted = [:user_id, :comment, :mark, :grade_point]
-  #   permitted << :other if params[:action] == 'create' && current_user.admin?
-  #   permitted
-  # end
+  config.per_page = [10, 50, 100]
+  permit_params :user_id, :mark, :grade_point, :comment
   
+  index title: 'Student Mark Manager' do
+    selectable_column
+    column :user
+    column :mark
+    column :grade_point
+    column :comment
+  end
+
 end
