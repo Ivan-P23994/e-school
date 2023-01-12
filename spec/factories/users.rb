@@ -19,7 +19,6 @@
 #
 FactoryBot.define do
   factory :user, aliases: %i[lecturer student] do
-
     sequence(:id) { |n| n }
     password { '123456' }
     sequence(:email) { |n| "user-#{n}@email.com" }

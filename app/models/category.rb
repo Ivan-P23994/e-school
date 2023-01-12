@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: categories
@@ -10,4 +12,5 @@
 class Category < ApplicationRecord
   has_many :assets, inverse_of: :category
 
+  validates :category, presence: true
 end

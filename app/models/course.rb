@@ -21,7 +21,7 @@ class Course < ApplicationRecord
   validates :title, presence: true, length: 5..50
   validates :description, presence: true
   validates :field_of_study, presence: true
-  #validate :user_is_lecturer
+  # validate :user_is_lecturer
 
   def user_is_lecturer
     return if lecturer.role != 'lecturer'

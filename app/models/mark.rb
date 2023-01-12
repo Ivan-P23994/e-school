@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: marks
@@ -16,5 +18,4 @@ class Mark < ApplicationRecord
 
   belongs_to :user, inverse_of: :marks
   belongs_to :course, inverse_of: :marks
-
 end

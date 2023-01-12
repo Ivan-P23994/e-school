@@ -22,6 +22,6 @@ ActiveAdmin.register Lesson do
   end
 
   filter :title
-  #filter :by_isbn13_in, label: 'ISBN List', as: :text, input_html: {rows: 3}
+  # filter :by_isbn13_in, label: 'ISBN List', as: :text, input_html: {rows: 3}
   filter :description
 end

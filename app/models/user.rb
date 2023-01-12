@@ -41,7 +41,6 @@ class User < ApplicationRecord
                     format: { with: VALID_EMAIL_REGEX, message: 'Email format is invalid' }
 
   def full_name
-    first_name + ' ' + last_name
+    "#{first_name} #{last_name}"
   end
-
 end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: invoices
@@ -13,7 +15,7 @@
 #  updated_at  :datetime         not null
 #
 class Invoice < ApplicationRecord
-  enum :status, [ :paid, :unpaid ], default: :unpaid
+  enum :status, %i[paid unpaid], default: :unpaid
 
   belongs_to :user, inverse_of: :invoices
 

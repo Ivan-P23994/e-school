@@ -36,7 +36,7 @@ end
     last_name: Faker::Name.last_name,
     email: Faker::Internet.email,
     lectured_course_id: count + 1,
-    role: "lecturer",
+    role: 'lecturer',
     password: '123456'
   )
 end
@@ -59,18 +59,18 @@ end
     user_id: count + 1,
     course_id: 1,
     mark: rand(20..100),
-    comment: "Good",
+    comment: 'Good',
     grade_point: rand(0..4)
   )
 end
 
 20.times do
   @invoice = Invoice.create!(
-    invoice_no: "%05d" % rand(1..15),
+    invoice_no: '%05d' % rand(1..15),
     user_id: rand(1..60),
     title: Faker::Science.science(:formal, :applied),
     amount: rand(1000..10_000),
     paid_amount: rand(10..1000),
-    status: rand(1..2) == 1 ? "paid" : "unpaid"
+    status: rand(1..2) == 1 ? 'paid' : 'unpaid'
   )
 end

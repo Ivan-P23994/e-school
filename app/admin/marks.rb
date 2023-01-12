@@ -1,9 +1,11 @@
+# frozen_string_literal: true
+
 ActiveAdmin.register Mark do
   config.per_page = [10, 50, 100]
   permit_params :user_id, :course_id, :mark, :grade_point, :comment
 
   includes :user, :course
-  
+
   index title: 'Student Mark Manager' do
     column :user
     column :mark
