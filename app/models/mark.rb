@@ -4,6 +4,7 @@
 #
 #  id          :bigint           not null, primary key
 #  user_id     :bigint           not null
+#  course_id   :bigint           not null
 #  comment     :string
 #  mark        :integer
 #  grade_point :integer
