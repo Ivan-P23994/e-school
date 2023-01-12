@@ -1,18 +1,35 @@
 # frozen_string_literal: true
 
 ActiveAdmin.register Asset do
-  # See permitted parameters documentation:
-  # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
-  #
-  # Uncomment all parameters which should be permitted for assignment
-  #
-  # permit_params :serial, :title, :Status, :category_id, :location
-  #
-  # or
-  #
-  # permit_params do
-  #   permitted = [:serial, :title, :Status, :category_id, :location]
-  #   permitted << :other if params[:action] == 'create' && current_user.admin?
-  #   permitted
-  # end
+  config.per_page = [10, 50, 100]
+  config.sort_order = 'id_asc'
+  config.filters = false
+
+  actions :all, except: [:show]
+
+  permit_params :serial, :title, :status, :category_id, :location
+
+  index title: 'Assets' do
+    column '#' do |category|
+      category.id
+    end
+    column :serial
+    column :title
+    column :status
+    column "Category" do |asset|
+      span asset.category.category
+    end
+    column :location
+    actions
+  end
+
+  form do |f|
+    f.semantic_errors # shows errors on :base
+    f.input :serial
+    f.input :title
+    f.input :status
+    f.input :category, as: :select, collection: Category.all.collect {|product| [product.category, product.id] }
+    f.input :location
+    f.actions
+  end
 end
