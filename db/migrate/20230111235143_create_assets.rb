@@ -3,7 +3,7 @@ class CreateAssets < ActiveRecord::Migration[7.0]
     create_table :assets do |t|
       t.integer :serial
       t.string :title
-      t.integer :Status
+      t.integer :status
       t.references :category, null: false, foreign_key: true
       t.integer :location
 
