@@ -43,7 +43,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_11_235143) do
   create_table "assets", force: :cascade do |t|
     t.integer "serial"
     t.string "title"
-    t.integer "Status"
+    t.integer "status"
     t.bigint "category_id", null: false
     t.integer "location"
     t.datetime "created_at", null: false
