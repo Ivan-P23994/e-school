@@ -15,7 +15,9 @@ ActiveAdmin.register Asset do
     end
     column :serial
     column :title
-    column :status
+    column :status do |asset|
+      status_tag asset.status
+    end
     column "Category" do |asset|
       span asset.category.category
     end

@@ -2,6 +2,7 @@
 
 ActiveAdmin.register Invoice do
   config.per_page = [10, 50, 100]
+  config.sort_order = 'invoice_no_asc'
   menu priority: 6
 
   permit_params :invoice_no, :user_id, :title, :amount, :paid_amount, :status

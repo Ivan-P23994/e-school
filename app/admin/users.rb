@@ -2,6 +2,7 @@
 
 ActiveAdmin.register User, as: 'Student' do
   config.per_page = [10, 50, 100]
+  config.sort_order = 'id_asc'
   menu priority: 4
 
   controller do
@@ -15,8 +16,6 @@ ActiveAdmin.register User, as: 'Student' do
   permit_params :first_name, :email, :last_name, :lectured_course_id, :role
 
   index do
-    selectable_column
-    id_column
     column :first_name
     column :last_name
     column :email
@@ -30,6 +29,7 @@ end
 
 ActiveAdmin.register User, as: 'Lecturer' do
   config.per_page = [10, 50, 100]
+  config.sort_order = 'id_asc'
   menu priority: 3
 
   controller do
@@ -43,8 +43,6 @@ ActiveAdmin.register User, as: 'Lecturer' do
   permit_params :first_name, :email, :last_name, :lectured_course_id, :role
 
   index do
-    selectable_column
-    id_column
     column :first_name
     column :last_name
     column :email

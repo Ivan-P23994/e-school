@@ -5,12 +5,11 @@ ActiveAdmin.register Category do
   config.sort_order = 'id_asc'
   config.filters = false
 
-  actions :all, except: [:show, :new]
-
+  actions :all, except: [:show]
 
   permit_params :category
 
-  index title: 'Category' do
+  index title: 'Asset Category' do
     column '#' do |category|
       category.id
     end
