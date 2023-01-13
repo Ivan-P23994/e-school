@@ -14,10 +14,18 @@
 #  updated_at  :datetime         not null
 #
 class Mark < ApplicationRecord
+  include MarkParser
   enum :grade_point, %w[A A- B+ B C+ C F]
 
   belongs_to :user, inverse_of: :marks
   belongs_to :course, inverse_of: :marks
 
-  # TODO: Add if Mark == X, grade = Y validation, before hook and method.
+  validates :user_id, :course_id, :mark, :grade_point, presence: true
+  validate :correct_grade?
+
+  def correct_grade?
+    return if MarkParser.parse(mark) == grade_point
+
+    errors.add(:grade_point, 'The assigned grade does not correspond to the provided mark')
+  end
 end
