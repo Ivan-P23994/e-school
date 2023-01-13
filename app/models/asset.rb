@@ -23,8 +23,15 @@ class Asset < ApplicationRecord
   enum :status, ['Checked Out', 'In Storage'], default: 'In Storage'
 
   validates :serial, :title, :status, :location, presence: true
+  validate :stored_correctly?
 
   def location
     @location ||= AssetLocation.new(read_attribute(:location))
+  end
+
+  def stored_correctly?
+    return unless status == 'In Storage' && location.location != 'storage room'
+
+    errors.add(:location, 'Location does not correspond with status')
   end
 end
