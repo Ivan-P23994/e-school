@@ -10,15 +10,13 @@ ActiveAdmin.register Asset do
   permit_params :serial, :title, :status, :category_id, :location
 
   index title: 'Assets' do
-    column '#' do |category|
-      category.id
-    end
+    column '#', &:id
     column :serial
     column :title
     column :status do |asset|
       status_tag asset.status
     end
-    column "Category" do |asset|
+    column 'Category' do |asset|
       span asset.category.category
     end
     column :location
@@ -30,7 +28,7 @@ ActiveAdmin.register Asset do
     f.input :serial
     f.input :title
     f.input :status
-    f.input :category, as: :select, collection: Category.all.collect {|product| [product.category, product.id] }
+    f.input :category, as: :select, collection: Category.all.collect { |product| [product.category, product.id] }
     f.input :location
     f.actions
   end

@@ -18,4 +18,6 @@ class Mark < ApplicationRecord
 
   belongs_to :user, inverse_of: :marks
   belongs_to :course, inverse_of: :marks
+
+  # TODO: Add if Mark == X, grade = Y validation, before hook and method.
 end

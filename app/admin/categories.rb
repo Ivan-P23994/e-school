@@ -10,9 +10,7 @@ ActiveAdmin.register Category do
   permit_params :category
 
   index title: 'Asset Category' do
-    column '#' do |category|
-      category.id
-    end
+    column '#', &:id
     column :category
     actions
   end
