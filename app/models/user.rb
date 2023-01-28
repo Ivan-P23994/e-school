@@ -18,7 +18,7 @@
 #  lectured_course_id     :bigint
 #
 class User < ApplicationRecord
-  VALID_EMAIL_REGEX = /\A([\w+-].?)+@[a-z\d-]+(\.[a-z]+)*\.[a-z]+\z/i
+
 
   enum :role, %i[student lecturer], default: :student
 
@@ -38,7 +38,7 @@ class User < ApplicationRecord
   validates :last_name, presence: true, length: 2..20
   validates :email, presence: true,
                     uniqueness: { case_sensitive: false },
-                    format: { with: VALID_EMAIL_REGEX, message: 'Email format is invalid' }
+                    format: { with: URI::MailTo::EMAIL_REGEXP, message: 'Email format is invalid' }
 
   def full_name
     "#{first_name} #{last_name}"

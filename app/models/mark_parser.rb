@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module MarkParser
   # TODO: Implement multi country grading system using range value/key grade hash
 
