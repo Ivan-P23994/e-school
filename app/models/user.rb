@@ -18,8 +18,6 @@
 #  lectured_course_id     :bigint
 #
 class User < ApplicationRecord
-
-
   enum :role, %i[student lecturer], default: :student
 
   has_many :invoices, inverse_of: :user

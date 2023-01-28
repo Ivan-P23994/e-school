@@ -21,7 +21,7 @@ class Mark < ApplicationRecord
   belongs_to :course, inverse_of: :marks
 
   validates :user_id, :course_id, :mark, :grade_point, presence: true
-  #validate :correct_grade?
+  # validate :correct_grade?
 
   def correct_grade?
     return if MarkParser.parse(mark) == grade_point

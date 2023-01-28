@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 
 require 'rails_helper'
 
@@ -8,9 +9,9 @@ RSpec.describe Invoice, type: :model do
   it { should allow_value(99.99).for(:paid_amount) }
   it { is_expected.to validate_presence_of(:amount) }
   it { is_expected.to validate_presence_of(:invoice_no) }
-  it do 
-  should define_enum_for(:status).
-      with_values(%w[paid unpaid]).
-      backed_by_column_of_type(:integer)
+  it do
+    should define_enum_for(:status)
+      .with_values(%w[paid unpaid])
+      .backed_by_column_of_type(:integer)
   end
 end

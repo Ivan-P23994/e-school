@@ -1,8 +1,9 @@
+# frozen_string_literal: true
+
 FactoryBot.define do
   factory :asset do
-
     sequence(:id) { |n| n }
-    serial { 10000 }
+    serial { 10_000 }
     title { 'Asset' }
     status { 0 }
     location { AssetLocation.new(5).to_s }

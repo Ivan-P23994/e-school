@@ -27,9 +27,9 @@ RSpec.describe User, type: :model do
   it { is_expected.to validate_length_of(:first_name).is_at_least(2) }
   it { is_expected.to validate_presence_of(:email) }
 
-  it do 
-    should define_enum_for(:role).
-        with_values(%w[student lecturer]).
-        backed_by_column_of_type(:integer)
-    end
+  it do
+    should define_enum_for(:role)
+      .with_values(%w[student lecturer])
+      .backed_by_column_of_type(:integer)
+  end
 end
