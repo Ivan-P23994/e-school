@@ -82,6 +82,8 @@ end
 
 gem 'activeadmin', '~> 2.13'
 
+gem 'activeadmin-xls', '~>2.0.0'
+
 gem 'devise', '~> 4.8'
 
 gem 'faker', '~> 3.1'
