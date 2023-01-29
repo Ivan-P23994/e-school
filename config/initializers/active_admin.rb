@@ -7,6 +7,7 @@ ActiveAdmin.setup do |config|
   # Set the title that is displayed on the main layout
   # for each of the active admin pages.
   #
+  config.download_links = %i[csv xml json pdf]
   config.site_title = 'E School'
 
   # Set the link url for the title. For example, to take

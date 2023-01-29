@@ -16,14 +16,15 @@ class Course < ApplicationRecord
   has_and_belongs_to_many :students, class_name: 'User'
 
   has_many :lessons, inverse_of: :course
+  has_many :marks, inverse_of: :course
 
   validates :title, presence: true, length: 5..50
   validates :description, presence: true
   validates :field_of_study, presence: true
-  validate :user_is_lecturer
+  # validate :user_is_lecturer
 
   def user_is_lecturer
-    return unless lecturer.role != 'lecturer'
+    return if lecturer.role != 'lecturer'
 
     errors.add(:lecturer, 'The lecturer does not have the lecturer role.')
   end

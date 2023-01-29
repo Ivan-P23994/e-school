@@ -1,6 +1,10 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  resources :assets
+  resources :categories
+  resources :marks
+  resources :invoices
   resources :lessons
   resources :courses
 

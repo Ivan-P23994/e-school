@@ -15,3 +15,17 @@
 // For example, to change the default status-tag color:
 //
 //   .status_tag { background: #6090DB; }
+
+$invoice_status_colors: (
+  paid:      #329932, 
+  unpaid:  #FF320E,
+  in_storage:      #329932, 
+  checked_out:  #FF320E
+);
+.status_tag {
+  @each $state, $color in $invoice_status_colors {
+    &.#{$state} {
+      background: $color;
+    }
+  }
+}

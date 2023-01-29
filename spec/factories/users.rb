@@ -19,12 +19,11 @@
 #
 FactoryBot.define do
   factory :user, aliases: %i[lecturer student] do
-
     sequence(:id) { |n| n }
     password { '123456' }
     sequence(:email) { |n| "user-#{n}@email.com" }
     sequence(:first_name) { |n| "user#{n}" }
     sequence(:last_name) { |n| "useric#{n}" }
-    traits_for_enum(:role, %w[lecturer])
+    traits_for_enum(:role, %w[student lecturer])
   end
 end
