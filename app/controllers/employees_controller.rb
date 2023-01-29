@@ -12,7 +12,7 @@ class EmployeesController < ApplicationController
   def show; end
 
   def new
-    @employee =Eemployee.new
+    @employee = Eemployee.new
   end
 
   def edit; end

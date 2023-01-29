@@ -80,9 +80,7 @@ group :test do
   gem 'webdrivers'
 end
 
-gem 'activeadmin', '~> 2.13'
-
-gem 'activeadmin-xls', '~>2.0.0'
+gem 'activeadmin'
 
 gem 'devise', '~> 4.8'
 
