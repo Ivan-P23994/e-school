@@ -82,6 +82,12 @@ end
 
 gem 'activeadmin'
 
+gem 'caxlsx'
+
+gem 'caxlsx_rails'
+
+gem 'roo'
+
 gem 'devise', '~> 4.8'
 
 gem 'faker', '~> 3.1'
