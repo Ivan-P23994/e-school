@@ -82,9 +82,7 @@ end
 
 gem 'activeadmin'
 
-gem 'caxlsx'
-
-gem 'caxlsx_rails'
+gem 'spreadsheet'
 
 gem 'roo'
 
