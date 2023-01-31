@@ -24,7 +24,7 @@ ActiveAdmin.register Employee do
 
   collection_action :export_xlsx, method: :get do
     book = Spreadsheet::Workbook.new
-    sheet = book.create_worksheet :name => 'Employees'
+    sheet = book.create_worksheet name: 'Employees'
 
     employees = Employee.all
 
@@ -32,7 +32,7 @@ ActiveAdmin.register Employee do
       sheet.row(i).push employee.first_name, employee.last_name, employee.email, employee.position
     end
 
-    send_data(book.write 'employees.xls')
+    send_data(book.write('employees.xls'))
   end
 
   # XLSX IMPORT #
@@ -56,7 +56,7 @@ ActiveAdmin.register Employee do
 
   # CSV IMPORT #
 
-  action_item only: :index do 
+  action_item only: :index do
     link_to 'Import CSV', action: 'open_csv_picker'
   end
 
