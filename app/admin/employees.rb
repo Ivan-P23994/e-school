@@ -23,10 +23,16 @@ ActiveAdmin.register Employee do
   end
 
   collection_action :export_xlsx, method: :get do
-    @employees = Employee.all
-    respond_to do |format|
-      format.xlsx
+    book = Spreadsheet::Workbook.new
+    sheet = book.create_worksheet :name => 'Employees'
+
+    employees = Employee.all
+
+    employees.each_with_index do |employee, i|
+      sheet.row(i).push employee.first_name, employee.last_name, employee.email, employee.position
     end
+
+    send_data(book.write 'employees.xls')
   end
 
   # XLSX IMPORT #
