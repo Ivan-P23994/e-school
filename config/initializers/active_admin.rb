@@ -3,11 +3,10 @@
 ActiveAdmin.setup do |config|
   config.skip_before_action :authenticate_user!
   # == Site Title
-  #
   # Set the title that is displayed on the main layout
   # for each of the active admin pages.
   #
-  config.download_links = %i[csv xml json pdf]
+  config.download_links = %i[csv xml json]
   config.site_title = 'E School'
 
   # Set the link url for the title. For example, to take
@@ -46,6 +45,7 @@ ActiveAdmin.setup do |config|
   #   config.namespace :admin do |admin|
   #     admin.site_title = "Custom Admin Title"
   #   end
+
   #
   # This will ONLY change the title for the admin section. Other
   # namespaces will continue to use the main "site_title" configuration.

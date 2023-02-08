@@ -80,7 +80,11 @@ group :test do
   gem 'webdrivers'
 end
 
-gem 'activeadmin', '~> 2.13'
+gem 'activeadmin'
+
+gem 'spreadsheet'
+
+gem 'roo'
 
 gem 'devise', '~> 4.8'
 
